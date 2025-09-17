@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bus Ticket Booking</h1>
+        <div id="bus-details">
+            <p>Bus Route: <strong>Route A - City Center to Park</strong></p>
+            <p>Stops:</p>
+            <ul id="stops-list">
+                <li>City Center</li>
+                <li>Main Square</li>
+                <li>Park Avenue</li>
+                <li>River Bridge</li>
+                <li>Park</li>
+            </ul>
+            <p>Available Seats: <span id="available-seats">10</span></p>
+            <button id="book-ticket" onclick="bookTicket()">Book a Ticket</button>
+            <div id="confirmation" style="display:none;">
+                <p>✅ Ticket Booked Successfully!</p>
+            </div>
+            <div id="no-seats" style="display:none; color: red;">
+                <p>❌ No more seats available!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
