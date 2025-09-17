@@ -1,4 +1,4 @@
-let totalSeats = 10;
+let totalSeats = 30;
 let bookedSeats = 0;
 
 function updateSeatsDisplay() {
