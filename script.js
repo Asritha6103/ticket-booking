@@ -1,17 +1,14 @@
-let availableSeats = 30;  // total seats
+// Generate tickets (example: T001 to T030)
+let tickets = Array.from({ length: 30 }, (_, i) => `T${String(i + 1).padStart(3, '0')}`);
 
-// Update the UI with the current available seats
+// Update the UI with remaining tickets
 function updateSeats() {
-    document.getElementById('available-seats').innerText = availableSeats;
+    document.getElementById('available-seats').innerText = tickets.length;
 }
 
-// Book tickets after asking user
+// Book tickets
 function bookTicket() {
-    let toBook = prompt("Enter number of tickets to book (max 6):");
-
-    // Convert input to number
-    toBook = parseInt(toBook);
-
+    const toBook = parseInt(prompt("Enter number of tickets to book (max 6):"));
     const msg = document.getElementById("confirmation");
 
     if (isNaN(toBook) || toBook < 1) {
@@ -26,16 +23,16 @@ function bookTicket() {
         return;
     }
 
-    if (availableSeats - toBook >= 0) {
-        availableSeats -= toBook;
+    if (tickets.length >= toBook) {
+        // Remove booked tickets from array
+        const booked = tickets.splice(0, toBook);
         updateSeats();
+
         msg.style.color = "green";
-        msg.innerText = `✅ Successfully booked ${toBook} ticket(s)!`;
+        msg.innerText = `✅ Successfully booked ${booked.length} ticket(s): ${booked.join(', ')}`;
     } else {
-        availableSeats = 0;
-        updateSeats();
         msg.style.color = "red";
-        msg.innerText = "❌ Seats filled!";
+        msg.innerText = "❌ Not enough tickets available!";
         document.getElementById('book-ticket').disabled = true;
     }
 }
